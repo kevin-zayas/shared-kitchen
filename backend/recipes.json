@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Spaghetti",
+    "description": "Classic Italian pasta",
+    "instructions": "Boil pasta and add sauce.",
+    "ingredients": ["1 lb pasta", "2 cups marinara", "Salt to taste"],
+    "owner_id": 1
+  },
+  {
+    "title": "Chicken Stir Fry",
+    "description": "Quick Asian-style chicken dish",
+    "instructions": "Cook chicken, add veggies and sauce.",
+    "ingredients": ["1 lb chicken", "2 cups vegetables", "Soy sauce"],
+    "owner_id": 1
+  },
+  {
+    "title": "Grilled Cheese",
+    "description": "Simple cheesy sandwich",
+    "instructions": "Grill bread and cheese until golden.",
+    "ingredients": ["2 slices bread", "Cheddar cheese", "Butter"],
+    "owner_id": 2
+  },
+  {
+    "title": "Pancakes",
+    "description": "Fluffy breakfast classic",
+    "instructions": "Mix ingredients, cook on griddle.",
+    "ingredients": ["1 cup flour", "1 egg", "1 cup milk", "Maple syrup"],
+    "owner_id": 2
+  },
+  {
+    "title": "Tacos",
+    "description": "Mexican-style street food",
+    "instructions": "Cook meat, fill tortillas, add toppings.",
+    "ingredients": ["Tortillas", "Ground beef", "Cheese", "Lettuce", "Tomato"],
+    "owner_id": 3
+  },
+  {
+    "title": "Caesar Salad",
+    "description": "Crisp salad with creamy dressing",
+    "instructions": "Toss all ingredients in a bowl.",
+    "ingredients": ["Romaine lettuce", "Croutons", "Caesar dressing", "Parmesan"],
+    "owner_id": 4
+  },
+  {
+    "title": "Mac and Cheese",
+    "description": "Creamy cheesy pasta",
+    "instructions": "Boil pasta, mix with cheese sauce.",
+    "ingredients": ["Macaroni", "Cheddar cheese", "Milk", "Butter"],
+    "owner_id": 3
+  },
+  {
+    "title": "Fried Rice",
+    "description": "Quick and easy rice dish",
+    "instructions": "Stir-fry rice with eggs and vegetables.",
+    "ingredients": ["Cooked rice", "Eggs", "Carrots", "Peas", "Soy sauce"],
+    "owner_id": 4
+  },
+  {
+    "title": "Tomato Soup",
+    "description": "Warm and comforting soup",
+    "instructions": "Simmer tomatoes and blend.",
+    "ingredients": ["Tomatoes", "Garlic", "Onion", "Cream"],
+    "owner_id": 5
+  },
+  {
+    "title": "Beef Stew",
+    "description": "Hearty stew with beef and veggies",
+    "instructions": "Simmer beef with vegetables until tender.",
+    "ingredients": ["Beef chunks", "Potatoes", "Carrots", "Onions", "Beef broth"],
+    "owner_id": 5
+  }
+]

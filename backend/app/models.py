@@ -23,3 +23,14 @@ class Recipe(Base):
     owner_id = Column(Integer, ForeignKey("users.id"))
 
     owner = relationship("User", back_populates="recipes")
+
+class Follow(Base):
+    __tablename__ = "follows"
+
+    id = Column(Integer, primary_key=True, index=True)
+    follower_id = Column(Integer, ForeignKey("users.id"))  # The user who follows
+    following_id = Column(Integer, ForeignKey("users.id"))  # The user being followed
+
+    # Optional: relationships for easier querying
+    follower = relationship("User", foreign_keys=[follower_id], backref="following")
+    following = relationship("User", foreign_keys=[following_id], backref="followers")

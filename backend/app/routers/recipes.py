@@ -56,3 +56,19 @@ def create_recipes_bulk(recipes: List[schemas.RecipeCreate] = Body(...), db: Ses
 @router.get("/", response_model=List[schemas.RecipeRead])
 def get_recipes(db: Session = Depends(get_db)):
     return db.query(models.Recipe).all()
+
+@router.get("/users/{user_id}/recipes", response_model=List[schemas.RecipeRead])
+def get_user_recipes(user_id: int, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    return user.recipes
+
+@router.get("/following_recipes/", response_model=List[schemas.RecipeRead])
+def get_following_recipes(db: Session = Depends(get_db), current_user_id: int = 1):
+    following = db.query(models.Follow).filter_by(follower_id=current_user_id).all()
+    following_ids = [f.following_id for f in following]
+
+    recipes = db.query(models.Recipe).filter(models.Recipe.owner_id.in_(following_ids)).all()
+    return recipes

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import users, recipes, follow
+from app.routers import users, recipes, follow, reviews
 from app.database import engine, Base
 
 
@@ -7,6 +7,7 @@ app = FastAPI()
 app.include_router(users.router)
 app.include_router(recipes.router)
 app.include_router(follow.router)
+app.include_router(reviews.router)
 
 @app.get("/")
 def read_root():

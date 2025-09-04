@@ -17,7 +17,7 @@ def get_db():
     finally:
         db.close()
 
-@router.post("/", response_model=schemas.RecipeRead)
+@router.post("/", response_model=schemas.RecipeResponse)
 def create_recipe(recipe: schemas.RecipeCreate, db: Session = Depends(get_db)):
     db_user = db.query(models.User).filter(models.User.id == recipe.owner_id).first()
     if not db_user:
@@ -29,7 +29,7 @@ def create_recipe(recipe: schemas.RecipeCreate, db: Session = Depends(get_db)):
     db.refresh(new_recipe)
     return new_recipe
 
-@router.post("/bulk", response_model=List[schemas.RecipeRead])
+@router.post("/bulk", response_model=List[schemas.RecipeResponse])
 def create_recipes_bulk(recipes: List[schemas.RecipeCreate] = Body(...), db: Session = Depends(get_db)):
     db_recipes = []
 
@@ -53,11 +53,11 @@ def create_recipes_bulk(recipes: List[schemas.RecipeCreate] = Body(...), db: Ses
 
     return db_recipes
 
-@router.get("/", response_model=List[schemas.RecipeRead])
+@router.get("/", response_model=List[schemas.RecipeResponse])
 def get_recipes(db: Session = Depends(get_db)):
     return db.query(models.Recipe).all()
 
-@router.get("/users/{user_id}/recipes", response_model=List[schemas.RecipeRead])
+@router.get("/users/{user_id}/recipes", response_model=List[schemas.RecipeResponse])
 def get_user_recipes(user_id: int, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == user_id).first()
     if not user:
@@ -65,7 +65,7 @@ def get_user_recipes(user_id: int, db: Session = Depends(get_db)):
     
     return user.recipes
 
-@router.get("/following_recipes/", response_model=List[schemas.RecipeRead])
+@router.get("/following_recipes/", response_model=List[schemas.RecipeResponse])
 def get_following_recipes(db: Session = Depends(get_db), current_user_id: int = 1):
     following = db.query(models.Follow).filter_by(follower_id=current_user_id).all()
     following_ids = [f.following_id for f in following]

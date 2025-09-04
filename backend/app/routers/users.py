@@ -17,7 +17,7 @@ def get_db():
     finally:
         db.close()
 
-@router.post("/", response_model=schemas.UserRead)
+@router.post("/", response_model=schemas.UserResponse)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = db.query(models.User).filter(models.User.email == user.email).first()
     if db_user:
@@ -29,11 +29,11 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db.refresh(new_user)
     return new_user
 
-@router.get("/", response_model=List[schemas.UserRead])
+@router.get("/", response_model=List[schemas.UserResponse])
 def get_users(db: Session = Depends(get_db)):
     return db.query(models.User).all()
 
-@router.post("/bulk", response_model=List[schemas.UserRead])
+@router.post("/bulk", response_model=List[schemas.UserResponse])
 def create_users_bulk(users: List[schemas.UserCreate] = Body(...), db: Session = Depends(get_db)):
     created_users = []
     for user in users:
